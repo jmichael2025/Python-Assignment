@@ -2,7 +2,7 @@
 body{
     margin: 0;
     box-sizing: border-box;
-    background-color: rgb(162, 181, 223);
+    background-color: rgb(236, 243, 237);
     color: black;
     font-family: 'Arial', sans-serif;
     text-align: center;
@@ -15,7 +15,7 @@ body{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #134ca1;
+  background-color: #04660893;
   padding: 1rem 2rem;
 }
 .nav-left {
@@ -38,11 +38,22 @@ body{
     margin-top: 10px;
   }
 
-.nav-right{
+  .nav-center .main-heading {
+  font-size: 2.5rem;
+  font-family: 'verdana', sans-serif;
+    margin: 0;
+  }
+
+  .nav-right {
+  display: flex;
+        
+  gap: 20px;}
+
+/*.nav-right{
   overflow: hidden;
   color: #fff;
   text-decoration: none;
-}
+}*/
 
 .nav-right.a{ float: left;
   display: block;
@@ -79,7 +90,7 @@ body{
 
 .hero {
   min-height: 100vh;
-  background-image: url("../../images/background1.jpg");
+  background-image: url("../../images/money1.jpg");
   background-size: cover;
   background-position: center;
   justify-content: center;
@@ -88,13 +99,12 @@ body{
   padding: 60px;
 }
 .hero h1 {
-  font-size: 3rem;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  
   color: white;
   margin-bottom: 20px;
 }
 .hero-content {
-  background-color: #0e5cd2;
+  background-color: #00150193;
   color: white;
   max-width: 500px;
   padding: 40px;
@@ -137,7 +147,7 @@ body{
 
 /* Footer */
    .footer {
-        background-color:#3e5d8b;
+        background-color: #04660893;
         padding: 0.6rem 0.4rem;
         height: 8%;
         margin: 0;
