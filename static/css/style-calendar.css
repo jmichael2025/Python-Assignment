@@ -90,11 +90,12 @@ body{
 
 .calendar {
   width: 100%;
-  max-width: 400px;
+  height: 100vh;
+  max-width: 600px;
   border: 1px solid #ddd;
   border-radius: 10px;
   overflow: hidden;
-  align-items: center;
+  margin: 20px auto;
 }
 
 .header {
@@ -114,16 +115,18 @@ body{
   padding: 10px;
   font-weight: bold;
   background: #f0f0f0;
+  border: 1px solid #0d1d03;
 }
 
 .dates div {
   text-align: center;
+  aspect-ratio: 1 / 1.47;
   padding: 15px;
-  border: 1px solid #eee;
+  border: 1px solid #0d1d03;
 }
 
 .dates div:hover {
-  background: #4CAF50;
+  background: #2c2d2c;
   color: white;
   cursor: pointer;
 }
@@ -191,7 +194,7 @@ body{
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .dates div {
     padding: 10px;
     font-size: 12px;
