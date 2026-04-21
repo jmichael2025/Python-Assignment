@@ -1,0 +1,19 @@
+
+function addRow(){
+  const table = document.getElementById("expenseTable").getElementsByTagName('tbody')[0];
+  const row = table.insertRow();
+  for(let i=0;i<3;i++){
+    const cell = row.insertCell(i);
+    cell.contentEditable = true;
+    cell.innerText = "Edit";
+  }
+}
+
+function deleteRow() {
+  const table = document.getElementById("dataTable").getElementsByTagName('tbody')[0];
+  if (table.rows.length > 0) {
+    table.deleteRow(table.rows.length - 1);
+  } else {
+    alert("No rows to delete");
+  }
+}

@@ -10,58 +10,48 @@
 <body>  
     <nav class="navbar">
             <div class="nav-left">
-               <img src="../images/logo.png" alt="LOGO" class="logo">
-               
+               <img src="../images/logo.png" alt="LOGO" class="logo">  
             </div>
             <div class="nav-center">
                 <h1 class="main-heading">Wallet Watcher</h1>
                 <h2>Personal Expense Tracker</h2>
-                <p>Get real-time updates and insights on your holdings.</p>
-                
+                <p1>Get real-time updates and insights on your holdings.</p1>    
             </div>
             <div class="nav-right" id="Topnav">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
-                <a href="javascript:void(0);" class="icon" onclick="displayHamberger()">
-                    <i class="fa fa-bars"></i>
-                </a>
+                <img src="../images/logo.png" alt="LOGO" class="logo">
             </div>
     </nav>
     <section class="hero">
         
     <div class="hero-content"> 
-            <!--registration form-->
            
             <h2>Track Your Wallets with Ease</h2>
-            <h3> Register to get started!</h3>
+            <div class="about">
+            
+            <p2>Wallet Watcher is a web application designed to help users manage personal expenses and securely and efficiently. 
+                It includes a login system to protect user data and a dashboard that displays a summary of spending and recent transactions. 
+                Users can add new expenses by entering details like amount, category, and date, as well as delete entries to keep records accurate. 
+                An edit page allows users to update existing expenses. With its simple interface and essential features, 
+                Wallet Watcher helps users stay organized, track their spending habits, and make better financial decisions. </p2>
+            </div>
+                    
                 <div class="container">
                     
                     <form id="signUpForm">
+                        <h3> Login to get started!</h3>
                         <label for="username"><b>Username</b></label>
-                        <input type="text" placeholder="Enter Username" name="username" id="username" required>
+                        <input type="text" placeholder="Enter Username">
+                        <label for="password"><b>Password</b></label>
+                        <input type="password" placeholder="Enter Password">
                         
-                        <label for="email">Email</label>
-                        <input type="email" placeholder="Enter Email" name="email" id="email" required>
-
-                    <div class="input-group">
-                            <label for="password"><b>Password</b></label>
-                            <input type="password" placeholder="Enter Password" name="password" id="password" required>
-                            <small id="passwordError"></small>
-                    </div>
-                       
-                    <div class="input-group">
-                    <label for="confirmPassword"><b>Confirm Password</b></label>
-                    <input type="password" placeholder="Confirm Password" name="confirmPassword" id="confirmPassword" required>
-                    <small id="confirmError"></small>
-                    </div>
-
-                    <button type="submit" class="Registerbtn">Register</button>
                     <button type="button" class="loginbtn" id="loginBtn">Log in</button>
+                    <p id="message"></p>
+                    onclick="login('admin', 'admin')"
                 </div> 
     </div>
     </div>
-    </section>   
+    </section> 
+    <script src="../static/js/script.js"></script>  
     <footer class="footer">
         <div class="footer-icons">
             <a href="https://www.facebook.com/ExpenseTracker2.0" aria-label="Facebook">
@@ -73,6 +63,7 @@
             <a href="mailto:info@walletwatcher.com" aria-label="Email">
             <i class="fas fa-envelope"></i>
             </a>
+            <p>Walletwatcher &copy 2026 All Rights Reserved</p>
         </div>
     </footer>
 </body>

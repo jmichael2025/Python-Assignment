@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <title>WalletWatcher</title>
-    <link rel="stylesheet" href="../static/css/dashboard.css"/>
+    <link rel="stylesheet" href="../static/css/editor.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -10,43 +10,35 @@
 <body>  
     <nav class="navbar">
             <div class="nav-left">
-               <img src="../images/logo.png" alt="LOGO" class="logo">
+               <img src="../images/logo.png" alt="LOGO" class="logo">            
             </div>
-
             <div class="nav-center">
                 <h1 class="main-heading">Wallet Watcher</h1>
                 <h2>Personal Expense Tracker</h2>
                 <p>Get real-time updates and insights on your holdings.</p>
                 
             </div>
-
-            <div class="nav-right" id="Topnav">
-                <a href="calendar.html">Calendar</a>
-                <a href="index.html">Logout</a>
+            <div class="nav-right">
+                <a href="dashboard.html">Dashboard</a>
+                <button onclick="location.href='index.html'">Logout</button>
             </div>
     </nav>
-    
-    <div class="container">
-
-        <div class="left">
-            <h2>Expenses Overview</h2>
-                <canvas class="pie-chart" id="pieChart"></canvas>
-        </div>
-
-        <div class="right">
+    <section><div class="container">
             <table id="expenseTable">
+                <h3>Expense Editor</h3>
 
-                <p>This dashboard displays monthly expenses in a clear, organized view. Users can navigate
-                     between months using previous and next buttons. It also includes options to add new expenses 
-                     or delete existing entries, allowing easy tracking and management of spending with simple, 
-                     interactive controls for a smooth user experience.</p>
+                <p>The expense manager page allows users to track spending easily. Simply press “Add Expense,” enter the expense details, and save it. 
+                    To remove an expense, select the desired entry from the list and press “Delete Expense.” 
+                    This helps users maintain accurate and organized financial records quickly and efficiently.</p>
 
-                <div class="btn-container" id="btnContainer">               
-                    <button onclick="changeMonth(-1)">Previous</button>
-                    <button>Current Month</button>
-                    <button onclick="changeMonth(1)">Next</button>
+                <div class="btn-container" id="btnContainer">  
+                        
+                <button onclick="changeMonth(-1)">Previous</button>
+                <button>Current Month</button>
+                <button onclick="changeMonth(1)">Next</button>
+                
                 </div>
-            
+           
                 <thead>
                 <tr>
                     <th>Date</th>
@@ -56,20 +48,23 @@
                 </tr>
                 </thead>
                 <tbody>
-                
+
                 </tbody>
             </table>
 
-        <div class="actions">
+        <div class="actions">           
             <button onclick="addRow()">Add Expense</button>
             <button onclick="removeRow()">Remove Expense</button>
         </div>
-  </div>
-</div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="../static/js/script-pie.js"></script>
-    <script src="../static/js/script-dashboard.js"></script>
-    </section>   
+        </div>
+
+        <script src="../static/js/script-editor.js"></script>
+ 
+
+        
+
+
+</section>   
     <footer class="footer">
         <div class="footer-icons">
             <a href="https://www.facebook.com/ExpenseTracker2.0" aria-label="Facebook">
@@ -81,8 +76,7 @@
             <a href="mailto:info@walletwatcher.com" aria-label="Email">
             <i class="fas fa-envelope"></i>
             </a>
-            <p>Walletwatcher &copy 2026 All Rights Reserved</p>
         </div>
     </footer>
 </body>
-</html>    
+</html>

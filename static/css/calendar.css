@@ -1,8 +1,16 @@
-      /* general syling */
-body { margin:10px; 
-      font-family: Arial, sans-serif; 
-      background-color:white}
 
+/* general syling */
+body{
+    margin: 0;
+    box-sizing: border-box;
+    background-color: rgb(236, 243, 237);
+    color: black;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+/*navigation*/
 
 .navbar {
   display: flex;
@@ -26,7 +34,6 @@ body { margin:10px;
  .nav-center {
     position: static;
     color: white;
-    text-align: center;
     transform: none;
     width: 100%;
     margin-top: 10px;
@@ -39,9 +46,9 @@ body { margin:10px;
   }
 
   .nav-right {
-  display: flex;
-        
+  display: flex;   
   gap: 20px;}
+
 
 .nav-right.a{ float: left;
   display: block;
@@ -69,86 +76,50 @@ body { margin:10px;
   color:#ddd 
 }
 
-.nav-right .icon{ 
-  display: none;
-  padding: 0 0 0 2px;
-  z-index: 1001;
-}
-
-/* Dashboard Left column */
-.container { display:flex; 
-             min-height:100vh; }
-
-.left { flex:1; 
-      background:#f4f4f4;
-      padding: 50px; }
-      
- .pie-chart {
+/*calendar styling*/
+.calendar {
   width: 100%;
-  max-width: 300px;
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  background: conic-gradient(
-    #4CAF50 0% 40%,
-    #2196F3 40% 70%,
-    #FFC107 70% 100%
-  );
-  margin: auto;
-}     
-
-/* Dashboard Right column */
-.right { flex:2; 
-        padding: 50px;
-        background:rgb(205, 223, 210)
-      }
-
-.btn-container {
-  padding: 0px;
-  display: flex;
-  height: 10vh;
-  gap: 10px;  
-  background-color:rgb(205, 223, 210);
-  justify-content: space-around;
-  flex-wrap: wrap;  }
-  
-
-.right button
-    {padding: 10px 10px;
-    border: 2px solid whitesmoke;
-    color: white;
-    background-color: #081f17;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    flex: 1 1 150px;
-    padding: 5px 5px;
-    justify-content: space-between;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;  
-    font-size: 1rem;    
-    color: white;
+  height: 100vh;
+  max-width: 600px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 20px auto;
 }
 
+.header {
+  text-align: center;
+  padding: 15px;
+  background: #4CAF50;
+  color: white;
+}
 
-table { width:100%; 
-    border-collapse:collapse; 
-    margin-top: 2px; 
-    background-color: #547c60;  
-    overflow: hidden; 
-    font-size: 0.9rem; 
-    color: white; 
-    border: 2px solid white;}
+.days, .dates {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
 
+.days div {
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+  background: #f0f0f0;
+  border: 1px solid #0d1d03;
+}
 
-th, td { border:1px solid ; 
-    padding:10px; 
-    text-align:left; }
+.dates div {
+  text-align: center;
+  aspect-ratio: 1 / 1.47;
+  padding: 15px;
+  border: 1px solid #0d1d03;
+}
 
-th { background: #081f17; 
-    color: white; 
-    font-size: 1.1rem; }
-
-.actions { margin-top:10px; }
-
-/* Footer */
+.dates div:hover {
+  background: #2c2d2c;
+  color: white;
+  cursor: pointer;
+}
+/* Footer Styling */
    .footer {
         background-color: #04660893;
         padding: 0.6rem 0.4rem;
@@ -189,8 +160,6 @@ th { background: #081f17;
     }
 
 
-/* Responsive */
-
 /* Mobile Styles */
 @media screen and (max-width: 600px) {
   .nav-right a:not(:first-child) {display: none;}
@@ -212,12 +181,15 @@ th { background: #081f17;
     display: block;
     text-align: left;
   }
-
-
-@media(max-width:768px){
-  .container { flex-direction:column; }
-}   
 }
-@media (max-width: 600px) {.btn-container { flex-direction: column; gap: 10px; }
-  
+
+@media (max-width: 600px) {
+  .dates div {
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .header h2 {
+    font-size: 18px;
+  }
 }
