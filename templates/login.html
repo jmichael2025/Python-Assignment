@@ -10,7 +10,7 @@
 <body>  
     <nav class="navbar">
             <div class="nav-left">
-               <img src="../images/logo.png" alt="LOGO" class="logo">  
+               <!--<img src="../images/logo.png" alt="LOGO" class="logo">  -->
             </div>
             <div class="nav-center">
                 <h1 class="main-heading">Wallet Watcher</h1>
@@ -18,7 +18,7 @@
                 <p1>Get real-time updates and insights on your holdings.</p1>    
             </div>
             <div class="nav-right" id="Topnav">
-                <img src="../images/logo.png" alt="LOGO" class="logo">
+             <!--  <img src="../images/logo.png" alt="LOGO" class="logo">-->
             </div>
     </nav>
     <section class="hero">
@@ -36,17 +36,19 @@
             </div>
                     
                 <div class="container">
-                    
-                    <form id="signUpForm">
-                        <h3> Login to get started!</h3>
-                        <label for="username"><b>Username</b></label>
-                        <input type="text" placeholder="Enter Username">
-                        <label for="password"><b>Password</b></label>
-                        <input type="password" placeholder="Enter Password">
-                        
-                    <button type="button" class="loginbtn" id="loginBtn">Log in</button>
-                    <p id="message"></p>
-                    onclick="login('admin', 'admin')"
+                    <form action="/process_login" method="post">
+    <h3> Login to get started!</h3>
+
+    <label><b>Username</b></label>
+    <input type="text" name="username" placeholder="Enter Username" required>
+
+    <label><b>Password</b></label>
+    <input type="password" name="password" placeholder="Enter Password" required>
+
+    <button type="submit" class="loginbtn">Log in</button>
+    <div id="lblError" role="alert" style="color:red; text-align:center; font-size:14px; margin-top:10px;">{{ error }}</div>
+</form>
+
                 </div> 
     </div>
     </div>

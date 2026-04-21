@@ -3,13 +3,13 @@
 
             if (isLoggedIn !== "true") {
                 // Redirect back if not logged in
-                window.location.href = "index.html";
+                window.location.href = "login.html";
             }
           }
           
         function logout() {
             localStorage.removeItem("isLoggedIn");
-            window.location.href = "index.html";
+            window.location.href = "login.html";
         }*/
     
 
