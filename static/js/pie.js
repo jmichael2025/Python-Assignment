@@ -1,0 +1,35 @@
+        // Pass Flask session data to JS
+        const expenses = {{ expenses | tojson }};
+        // Aggregate totals by category
+        const categoryTotals = {};
+        debugger;
+        expenses.forEach(exp => {
+            if (!categoryTotals[exp.category]) categoryTotals[exp.category] = 0;
+            categoryTotals[exp.category] += exp.amount;
+        });
+
+        const labels = Object.keys(categoryTotals);
+        const data = Object.values(categoryTotals);
+
+        // Render pie chart
+        const ctx = document.getElementById('expensePie').getContext('2d');
+        new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Expenses by Category',
+                    data: data,
+                    backgroundColor: [
+                        '#FF6384', '#36A2EB', '#FFCE56',
+                        '#4BC0C0', '#9966FF', '#FF9F40'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'bottom' }
+                }
+            }
+        });

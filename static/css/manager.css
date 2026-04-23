@@ -4,6 +4,8 @@ body {
   background-color: rgb(236, 243, 237);
   color:#021f13;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 /*navigation*/
@@ -75,6 +77,8 @@ body {
 }
 
 /* container styling */
+.main
+  {flex: 1;} 
 
 .container {
   max-width: 900px;
@@ -89,7 +93,7 @@ body {
 .btn-container{
   padding: 0px;
   display: flex;
-  height: 10vh;
+  height: 1vh;
   gap: 10px;  
   background-color: rgb(205, 223, 210);
   justify-content: space-between;
@@ -103,7 +107,6 @@ button{
   cursor: pointer;
   transition: background-color 0.3s ease;
   flex: 1 1 150px;
-  padding: 5px 5px;
   justify-content: space-evenly;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;  
   font-size: 1.3rem;        
@@ -130,6 +133,28 @@ th { background: #081f17;
 .actions { margin-top:10px;
  }
 
+  h3 {
+    color: #021f13;
+    font-family: 'verdana', sans-serif;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  h4{
+    text-align: center;
+    color: #021f13;
+    font-family: 'verdana', sans-serif;
+    margin-bottom: 20px;}
+
+ .delete-expense {
+   padding: 5px;;
+   display: flex;
+  height: 10vh;
+  gap: 10px;  
+  background-color: rgb(205, 223, 210);
+  justify-content: space-between;
+  flex-wrap: wrap;
+  }
 
  /* Footer */
    .footer {

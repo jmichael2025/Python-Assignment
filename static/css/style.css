@@ -161,7 +161,12 @@ input[type=password]:focus {
 a {
   color: rgb(226, 230, 234);
 }
-
+#lblError {
+  color: red;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+}
 /* Footer */
 
    .footer {

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
 </head>
 <body>  
     <nav class="navbar">
@@ -20,17 +21,23 @@
                 
             </div>
 
-            <div class="nav-right" id="Topnav">
+            <div class="nav-right" id="navRight">
+                <div class="menu-items">
                 <a href="calendar.html">Calendar</a>
+                </div>
                 <a href="/logout">Logout</a>
+                <a href="javascript:void(0);" class="icon" onclick="displayHamburger()">
+                           <i class="fa fa-bars"></i>
+                </a>
+
             </div>
     </nav>
     
     <div class="container">
 
         <div class="left">
-            <h2>Expenses Overview</h2>
-                <canvas class="pie-chart" id="pieChart"></canvas>
+            <h2>Expenses by Category</h2>
+                <iframe src="/expenses_chart" title="Expenses Chart" class="chart-frame" height="400" width="400"></iframe>
         </div>
 
         <div class="right">
@@ -41,34 +48,59 @@
                      or delete existing entries, allowing easy tracking and management of spending with simple, 
                      interactive controls for a smooth user experience.</p>
 
-                <div class="btn-container" id="btnContainer">               
-                    <button onclick="changeMonth(-1)">Previous</button>
-                    <button>Current Month</button>
-                    <button onclick="changeMonth(1)">Next</button>
-                </div>
+                    <div class="btn-container">
+                        <button onclick="changeMonth(-1)">Previous</button>
+                        <button onclick="goCurrent()">Current Month</button>
+                        <button onclick="changeMonth(1)">Next</button>
+                    </div>
             
                 <thead>
                 <tr>
+                      <th>Id</th>  
                     <th>Date</th>
                     <th>Category</th>
                     <th>Amount</th>
+                    <th>Delete</th>
                     
                 </tr>
                 </thead>
-                <tbody>
                 
-                </tbody>
+                <tbody>
+                    {% for expense in session.expenses  %}
+                    <form method="POST" action="/deleteexpense/{{ expense.id }} ">
+
+                    <tr>
+                    <td>{{ expense.id }}</td>
+                    <td>{{ expense.date }}</td>
+                    <td>{{ expense.category }}</td>
+                    <td>{{ expense.amount }}</td>
+                    <td>
+                        <button type="submit">Delete</button>
+                    
+                    </td>
+                    </tr></form>
+                    {% endfor %}
+                    </tbody>
+
+                    <tfoot>
+                    <tr>
+                    <td colspan="3"><strong>Total</strong></td>
+                    <td><strong>{{ session.total }}</strong></td>
+                    </tr>
+                    </tfoot>
             </table>
 
         <div class="actions">
-            <button onclick="addRow()">Add Expense</button>
-            <button onclick="removeRow()">Remove Expense</button>
+            <div class="actions">
+    <button onclick="window.location.href='/manager'">Add Expense</button>
+</div>
         </div>
   </div>
 </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../static/js/script-pie.js"></script>
     <script src="../static/js/script-dashboard.js"></script>
+    <script src="../static/js/script.js"></script>
     </section>   
     <footer class="footer">
         <div class="footer-icons">

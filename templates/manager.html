@@ -22,46 +22,42 @@
 
             <div class="nav-right" id="Topnav">
                 <a href="dashboard.html">Dashboard</a>
-                <div class="logout">
-                <button onclick="location.href='login.html'">Logout</button>
-                </div>
+                <a href="calendar.html">Calendar</a>
+                <a href="/logout">Logout</a>
             </div>
     </nav>
     <section>
         <div class="container">
             <table id="expenseTable">
-
+                <h3>Manage Expenses</h3>  
                 <p>The expense manager page allows users to track spending easily. Simply press “Add Expense,” enter the expense details, and save it. 
-                    To remove an expense, select the desired entry from the list and press “Delete Expense.” 
-                    This helps users maintain accurate and organized financial records quickly and efficiently.</p>
+                </p>
+                <h4>Add Expense</h4>
 
-                <div class="btn-container" id="btnContainer">  
-                        
-                <button onclick="changeMonth(-1)">Previous</button>
-                <button>Current Month</button>
-                <button onclick="changeMonth(1)">Next</button>
-                
+                <div class="btn-container" id="btnContainer"> 
+                 
+                    <form method="POST" action="/addexpense">
+                        Date:
+                        <input type="date" name="date" required>
+                        Category:    
+                        <select name="category" required>
+                            <option value="disabled" selected>Select Category</option>
+                            <option>Food</option>
+                            <option>Fuel</option>
+                            <option>Cloths</option>
+                            <option>Entertainment</option>
+                            <option>Other</option>
+                            </select>
+                        Amount:
+                        <input type="number" name="amount" placeholder="Amount" required>
+                        <button type="submit">Add Expense</button>
+                    </form>
                 </div>
-           
-                <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Category</th>
-                    <th>Amount</th>
-                    
-                </tr>
-                </thead>
-                <tbody>
-
-                </tbody>
-            </table>
-
-        <div class="actions">           
-            <button onclick="addRow()">Add Expense</button>
-            <button onclick="removeRow()">Remove Expense</button>
+                
+                </div>  
+            </table> 
         </div>
         </div>
-
         <script src="../static/js/script-manager.js"></script>
  
     </section> 

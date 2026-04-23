@@ -40,11 +40,63 @@ body { margin:10px;
   font-family: 'verdana', sans-serif;
   margin: 0;
 }
+.nav-right {
+  display: flex;      
+  gap: 20px;}
+
+.nav-right.a{ float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 5px 5px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.nav-right a {
+  text-decoration: none;
+  color: white;
+  padding: 8px 12px;
+  text-align: center;
+}
+
+.nav-right a:hover {
+  color: #021f13 ;  
+  text-decoration: none;
+}
+
+.nav-right a.active{ 
+  background-color: #081f17;
+  color:#ddd 
+}
+.nav-right a {
+  display: inline-block;
+}
+.nav-right {
+  position: relative;
+}
+
+.menu-items {
+  display: flex;
+  gap: 10px;
+}
+.nav-right .icon {
+  display: none;
+}
 
 .container { 
   display:flex;          
   min-height:100vh; 
 }
+.nav-right {
+  position: relative;
+}
+
+.menu-items {
+  display: flex;
+  gap: 10px;
+}
+
 
 /* Dashboard Left column */
 
@@ -194,4 +246,62 @@ th { background: #081f17;
 @media (max-width: 600px) 
 {.btn-container { flex-direction: column; gap: 10px; }
   
+}
+@media screen and (max-width: 600px) {
+  .nav-right a {
+    display: none;
+  }
+
+  .nav-right a.icon {
+    display: block;
+    float: right;
+  }
+
+  .nav-right.responsive {
+    position: relative;
+  }
+
+  .nav-right.responsive a {
+    display: block;
+    text-align: left;
+  }
+
+  .nav-right.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+@media screen and (max-width: 600px) {
+
+  .menu-items {
+    display: none;
+    flex-direction: column;
+    background: #333;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    width: 150px;
+  }
+
+  .menu-items a {
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .menu-items a:hover {
+    background: #555;
+  }
+
+  .icon {
+    display: block;
+    cursor: pointer;
+  }
+
+  /* 🔑 Show menu on hover */
+  .nav-right:hover .menu-items {
+    display: flex;
+  }
 }
