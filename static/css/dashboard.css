@@ -218,7 +218,7 @@ th { background: #081f17;
 
 /* Mobile Styles */
 @media screen and (max-width: 600px) {
-  .nav-right a:not(:first-child) {display: none;}
+  .nav-right a:not(:first-child) {display: none; overflow: hidden;}
   .nav-right .icon {
     float: right;
     display: block;
