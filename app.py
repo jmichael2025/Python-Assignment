@@ -61,7 +61,6 @@ def add_expense():
 @app.route("/deleteexpense/<int:expense_id>", methods=['GET', 'POST'])
 def delete_expense(expense_id):
     data = session.get("expenses", [])
-    breakpoint()
     current_expense = next((e for e in data if e["id"] == expense_id), None)    
 
     data.remove(current_expense)

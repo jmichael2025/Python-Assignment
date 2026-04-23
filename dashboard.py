@@ -6,7 +6,6 @@ dashboard_bp = Blueprint("dashboard", __name__)
 @dashboard_bp.route("/dashboard")
 def view_dashboard():
     expenses = session.get('expenses', [])
-    breakpoint()
     month = request.args.get("month")
 
     if not month:
