@@ -1,5 +1,6 @@
 from flask import Flask, redirect, render_template, request, session, url_for, Blueprint
 from dashboard import dashboard_bp  
+import os
 
 app = Flask(__name__)  
 app.secret_key = "mysecret3453453"
@@ -55,7 +56,7 @@ def add_expense():
     data.append(new_expense)
     session["expenses"] = data
     session["total"] = sum(float(e["amount"]) for e in data)   
-    return redirect(url_for("dashboard.view_dashboard"))
+    return redirect(url_for("dashboard"))
     
 
 @app.route("/deleteexpense/<int:expense_id>", methods=['GET', 'POST'])
@@ -67,7 +68,7 @@ def delete_expense(expense_id):
     session["expenses"] = data
     session["total"] = sum(float(e["amount"]) for e in data)   
     
-    return redirect(url_for("dashboard.view_dashboard"))
+    return redirect(url_for("dashboard"))
 
 
 @app.route("/process_login", methods=['GET', 'POST'])
@@ -92,8 +93,8 @@ def expenses_chart():
 
 app.register_blueprint(dashboard_bp)
 
-if __name__ =="__main__":  
-    app.run(debug=True)
-    
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
 
 
