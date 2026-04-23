@@ -5,6 +5,9 @@ import os
 app = Flask(__name__)  
 app.secret_key = "mysecret3453453"
 
+@app.route("/")
+def index():
+    return render_template('login.html')
 
 @app.route("/login")
 def login():
