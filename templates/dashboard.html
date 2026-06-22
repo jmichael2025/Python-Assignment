@@ -25,32 +25,41 @@
 
         <div class="nav-right" id="navRight">
             <span class="welcome-text">
-                Welcome {{ session['user'] }} 
+                Welcome {{ session['user'] }}
             </span>
-                <a href="/calendar"> Calender </a>
-                <a href="/logout" class="logout-btn">Logout</a>
-                <a href="javascript:void(0);" 
-                   class="icon" 
-                   onclick="toggleMenu()">
-                    ☰
-                </a>
+            <a href="/calendar"> Calender </a>
+            <a href="/logout" class="logout-btn">Logout</a>
+            <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+                ☰
+            </a>
         </div>
     </nav>
+    <section class="dashboard-section">
 
-    <div class="container">
-
-        <div class="left">
-            <h2>Expenses by Category</h2>
-            <iframe src="/expenses_chart" title="Expenses Chart" class="chart-frame" height="400" width="400"></iframe>
+        <div class="dashboard-description">
+            <p>
+                This dashboard displays monthly expenses in a clear, organized view.
+                Users can navigate between months using Previous and Next buttons.
+                It also includes options to add new expenses or delete existing entries,
+                allowing easy tracking and management of spending with simple,
+                interactive controls for a smooth user experience.
+            </p>
         </div>
 
-        <div class="right">
-            <table id="expenseTable">
+        {% if session.expenses %}
 
-                <p>This dashboard displays monthly expenses in a clear, organized view. Users can navigate
-                    between months using previous and next buttons. It also includes options to add new expenses
-                    or delete existing entries, allowing easy tracking and management of spending with simple,
-                    interactive controls for a smooth user experience.</p>
+        <div class="container">
+
+            <div class="dashboard-left">
+
+                <h2>Expenses by Category</h2>
+
+                <iframe src="/expenses_chart" title="Expenses Chart" class="chart-frame" height="400" width="400">
+                </iframe>
+
+            </div>
+
+            <div class="dashboard-right">
 
                 <div class="btn-container">
                     <button onclick="changeMonth(-1)">Previous</button>
@@ -58,53 +67,77 @@
                     <button onclick="changeMonth(1)">Next</button>
                 </div>
 
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Date</th>
-                        <th>Category</th>
-                        <th>Amount</th>
-                        <th></th>
+                <table id="expenseTable">
 
-                    </tr>
-                </thead>
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Date</th>
+                            <th>Category</th>
+                            <th>Amount</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
 
-                <tbody>
-                    {% for expense in session.expenses %}
-                    <form method="POST" action="/deleteexpense/{{ expense.id }} ">
+                    <tbody>
+
+                        {% for expense in session.expenses %}
 
                         <tr>
                             <td>{{ expense.id }}</td>
                             <td>{{ expense.date }}</td>
                             <td>{{ expense.category }}</td>
                             <td>{{ expense.amount }}</td>
+
                             <td>
-                                <button
-                                    onclick="return confirm('Are you sure you want to delete this expense?');">Delete</button>
+                                <form method="POST" action="/deleteexpense/{{ expense.id }}">
+                                    <button onclick="return confirm('Are you sure you want to delete this expense?');">
+                                        Delete
+                                    </button>
+                                </form>
                             </td>
                         </tr>
-                    </form>
-                    {% endfor %}
-                </tbody>
 
-                <tfoot>
-                    <tr>
-                        <td colspan="3"><strong>Total</strong></td>
-                        <td><strong>{{ session.total }}</strong></td>
-                    </tr>
-                </tfoot>
-            </table>
+                        {% endfor %}
 
-            <div class="actions">
-                <div class="actions">
-                    <button onclick="window.location.href='/manager'">Add Expense</button>
-                </div>
+                    </tbody>
+
+                    <tfoot>
+                        <tr>
+                            <td colspan="3">
+                                <strong>Total</strong>
+                            </td>
+
+                            <td colspan="2">
+                                <strong>{{ session.total }}</strong>
+                            </td>
+                        </tr>
+                    </tfoot>
+
+                </table>
+
             </div>
+
         </div>
-    </div>
+
+        {% else %}
+
+        <div class="empty-state">
+            <h3>No expenses added yet</h3>
+            <p>Add your first expense to start tracking.</p>
+        </div>
+
+        {% endif %}
+
+        <div class="actions">
+            <button onclick="window.location.href='/manager'" class="add-button">
+                Add Expense
+            </button>
+        </div>
+
+    </section>
     <script src="../static/js/script-dashboard.js"></script>
     <script src="../static/js/script.js"></script>
-    </section>
     <footer class="footer">
         <div class="footer-icons">
             <a href="https://www.facebook.com/ExpenseTracker2.0" aria-label="Facebook">
