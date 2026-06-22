@@ -10,7 +10,7 @@
 <body>  
     <nav class="navbar">
             <div class="nav-left">
-               <!--<img src="../images/logo.png" alt="LOGO" class="logo">  -->
+                <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
             </div>
             <div class="nav-center">
                 <h1 class="main-heading">Wallet Watcher</h1>
@@ -18,10 +18,10 @@
                 <p1>Get real-time updates and insights on your holdings.</p1>    
             </div>
             <div class="nav-right" id="Topnav">
-             <!--  <img src="../images/logo.png" alt="LOGO" class="logo">-->
             </div>
     </nav>
     <section class="hero">
+        
         <img src="{{ url_for('static', filename='images/money1.jpg') }}">
         
     <div class="hero-content"> 
