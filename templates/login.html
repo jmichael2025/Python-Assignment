@@ -1,70 +1,82 @@
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>WalletWatcher</title>
-    <link rel="stylesheet" href="../static/css/style.css"/>
+    <link rel="stylesheet" href="../static/css/style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-<body>  
+
+<body>
     <nav class="navbar">
-            <div class="nav-left">
-                <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo" alt="Logo">
-            </div>
-            <div class="nav-center">
-                <h1 class="main-heading">Wallet Watcher</h1>
-                <h2>Personal Expense Tracker</h2>
-                <p>Get real-time updates and insights on your holdings.</p>    
-            </div>
-            <div class="nav-right" id="Topnav">
-            <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo-small" alt="Logo">
-    </div>
-        </nav>
-    <section class="hero">
-    <div class="hero-content"> 
-            <h2>Track Your Wallets with Ease</h2>
-            <div class="about">
-            
-            <p>Wallet Watcher is a web application designed to help users manage personal expenses and securely and efficiently. 
-                It includes a login system to protect user data and a dashboard that displays a summary of spending and recent transactions. 
-                Users can add new expenses by entering details like amount, category, and date, as well as delete entries to keep records accurate. 
-                An edit page allows users to update existing expenses. With its simple interface and essential features, 
-                Wallet Watcher helps users stay organized, track their spending habits, and make better financial decisions. </p>
-            </div>
-                    
-                <div class="container">
-                    <form action="/process_login" method="post">
-    <h3> Login to get started!</h3>
-
-    <label><b>Username</b></label>
-    <input type="text" name="username" placeholder="Enter Username" required>
-
-    <label><b>Password</b></label>
-    <input type="password" name="password" placeholder="Enter Password" required>
-
-    <button type="submit" class="loginbtn">Log in</button>
-    <div id="lblError" role="alert" >{{ error }}</div>
-</form>
-
-                </div> 
-    </div>
-    </div>
-    </section> 
-    <script src="../static/js/script.js"></script>  
-    <footer class="footer">
-        <div class="footer-icons">
-            <a href="https://www.facebook.com/ExpenseTracker2.0" aria-label="Facebook">
-            <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://www.instagram.com/personal_expense_tracker/" aria-label="Instagram">
-            <i class="fab fa-instagram"></i>
-            </a>
-            <a href="mailto:info@walletwatcher.com" aria-label="Email">
-            <i class="fas fa-envelope"></i>
-            </a>
-            <p>Walletwatcher &copy 2026 All Rights Reserved</p>
+        <div class="nav-left">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo" alt="Logo">
         </div>
-    </footer>
+        <div class="nav-center">
+            <h1 class="main-heading">Wallet Watcher</h1>
+            <h2>Personal Expense Tracker</h2>
+            <p>Get real-time updates and insights on your holdings.</p>
+        </div>
+    </nav>
+            <section class="hero">
+                <div class="hero-content">
+                    <h2>Track Your Wallets with Ease</h2>
+                    <div class="about">
+
+                        <p>Wallet Watcher is a web application designed to help users manage personal expenses and
+                            securely and
+                            efficiently.
+                            It includes a login system to protect user data and a dashboard that displays a summary of
+                            spending
+                            and recent transactions.
+                            Users can add new expenses by entering details like amount, category, and date, as well as
+                            delete
+                            entries to keep records accurate.
+                            An edit page allows users to update existing expenses. With its simple interface and
+                            essential
+                            features,
+                            Wallet Watcher helps users stay organized, track their spending habits, and make better
+                            financial
+                            decisions. </p>
+                    </div>
+
+                    <div class="container">
+                        <form action="/process_login" method="post">
+                            <h3> Login to get started!</h3>
+
+                            <label><b>Username</b></label>
+                            <input type="text" name="username" placeholder="Enter Username" required>
+
+                            <label><b>Password</b></label>
+                            <input type="password" name="password" placeholder="Enter Password" required>
+
+                            <button type="submit" class="loginbtn">Log in</button>
+                            {% if error %}
+                            <div id="lblError" role="alert">{{ error }}</div>
+                            {% endif %}
+                        </form>
+
+                    </div>
+                </div>
+        </div>
+        </section>
+        <script src="../static/js/script.js"></script>
+        <footer class="footer">
+            <div class="footer-icons">
+                <a href="https://www.facebook.com/ExpenseTracker2.0" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/personal_expense_tracker/" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="mailto:info@walletwatcher.com" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <p>Walletwatcher &copy 2026 All Rights Reserved</p>
+            </div>
+        </footer>
 </body>
+
 </html>

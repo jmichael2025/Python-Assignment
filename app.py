@@ -74,7 +74,7 @@ def delete_expense(expense_id):
     return redirect(url_for("dashboard"))
 
 
-@app.route("/process_login", methods=['GET', 'POST'])
+@app.route("/process_login", methods=['POST'])
 def process_login():
     if request.method == 'POST':
         username = request.form.get('username')

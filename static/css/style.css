@@ -168,8 +168,10 @@ a {
 #lblError {
   color: red;
   text-align: center;
+  display: block;
   font-size: 14px;
   margin-top: 10px;
+  font-weight: bold;
 }
 /* Footer */
 
