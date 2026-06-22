@@ -1,13 +1,4 @@
-
-function displayHamburger() {
-    function displayHamburger() {
-  document.querySelector(".menu-items").classList.toggle("show");
+function toggleMenu() {
+    var nav = document.getElementById("navRight");
+    nav.classList.toggle("responsive");
 }
-  x.classList.toggle("responsive");}
-
-  if (x.className === "nav-right") {
-    x.className += " responsive";
-  } else {
-    x.className = "nav-right";
-  }
-  
