@@ -1,117 +1,122 @@
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>WalletWatcher</title>
-    <link rel="stylesheet" href="../static/css/dashboard.css"/>
+    <link rel="stylesheet" href="../static/css/dashboard.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+
 </head>
-<body>  
+
+<body>
     <nav class="navbar">
-            <div class="nav-left">
-               <img src="../images/logo.png" alt="LOGO" class="logo">
-            </div>
+        <div class="nav-left">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo" alt="Logo">
+        </div>
 
-            <div class="nav-center">
-                <h1 class="main-heading">Wallet Watcher</h1>
-                <h2>Personal Expense Tracker</h2>
-                <p>Get real-time updates and insights on your holdings.</p>
-                
-            </div>
+        <div class="nav-center">
+            <h1 class="main-heading">Wallet Watcher</h1>
+            <h2>Personal Expense Tracker</h2>
+            <p>Get real-time updates and insights on your holdings.</p>
 
-            <div class="nav-right" id="navRight">
-                <div class="menu-items">
+        </div>
+
+        <div class="nav-right" id="navRight">
+            <div class="menu-items">
                 <a href="calendar.html"></a>
-                
-               Welcome {{ session.user }} user,   &nbsp;  <a href="/logout">Logout</a>
+
+                Welcome {{ session.user }} user, &nbsp; <a href="/logout">Logout</a>
                 <a href="javascript:void(0);" class="icon" onclick="displayHamburger()">
-                           <i class="fa fa-bars"></i>
+                    <i class="fa fa-bars"></i>
                 </a>
             </div>
-            </div>
+        </div>
     </nav>
-    
+
     <div class="container">
 
         <div class="left">
             <h2>Expenses by Category</h2>
-                <iframe src="/expenses_chart" title="Expenses Chart" class="chart-frame" height="400" width="400"></iframe>
+            <iframe src="/expenses_chart" title="Expenses Chart" class="chart-frame" height="400" width="400"></iframe>
         </div>
 
         <div class="right">
             <table id="expenseTable">
 
                 <p>This dashboard displays monthly expenses in a clear, organized view. Users can navigate
-                     between months using previous and next buttons. It also includes options to add new expenses 
-                     or delete existing entries, allowing easy tracking and management of spending with simple, 
-                     interactive controls for a smooth user experience.</p>
+                    between months using previous and next buttons. It also includes options to add new expenses
+                    or delete existing entries, allowing easy tracking and management of spending with simple,
+                    interactive controls for a smooth user experience.</p>
 
-                    <div class="btn-container">
-                        <button onclick="changeMonth(-1)">Previous</button>
-                        <button onclick="goCurrent()">Current Month</button>
-                        <button onclick="changeMonth(1)">Next</button>
-                    </div>
-            
+                <div class="btn-container">
+                    <button onclick="changeMonth(-1)">Previous</button>
+                    <button onclick="goCurrent()">Current Month</button>
+                    <button onclick="changeMonth(1)">Next</button>
+                </div>
+
                 <thead>
-                <tr>
-                      <th>Id</th>  
-                    <th>Date</th>
-                    <th>Category</th>
-                    <th>Amount</th>
-                    <th></th>
-                    
-                </tr>
+                    <tr>
+                        <th>Id</th>
+                        <th>Date</th>
+                        <th>Category</th>
+                        <th>Amount</th>
+                        <th></th>
+
+                    </tr>
                 </thead>
-                
+
                 <tbody>
-                    {% for expense in session.expenses  %}
+                    {% for expense in session.expenses %}
                     <form method="POST" action="/deleteexpense/{{ expense.id }} ">
 
-                    <tr>
-                    <td>{{ expense.id }}</td>
-                    <td>{{ expense.date }}</td>
-                    <td>{{ expense.category }}</td>
-                    <td>{{ expense.amount }}</td>
-                    <td>
-                        <button onclick="return confirm('Are you sure you want to delete this expense?');">Delete</button>
-                    </td>
-                    </tr></form>
+                        <tr>
+                            <td>{{ expense.id }}</td>
+                            <td>{{ expense.date }}</td>
+                            <td>{{ expense.category }}</td>
+                            <td>{{ expense.amount }}</td>
+                            <td>
+                                <button
+                                    onclick="return confirm('Are you sure you want to delete this expense?');">Delete</button>
+                            </td>
+                        </tr>
+                    </form>
                     {% endfor %}
-                    </tbody>
+                </tbody>
 
-                    <tfoot>
+                <tfoot>
                     <tr>
-                    <td colspan="3"><strong>Total</strong></td>
-                    <td><strong>{{ session.total }}</strong></td>
+                        <td colspan="3"><strong>Total</strong></td>
+                        <td><strong>{{ session.total }}</strong></td>
                     </tr>
-                    </tfoot>
+                </tfoot>
             </table>
 
-        <div class="actions">
             <div class="actions">
-    <button onclick="window.location.href='/manager'">Add Expense</button>
-</div>
+                <div class="actions">
+                    <button onclick="window.location.href='/manager'">Add Expense</button>
+                </div>
+            </div>
         </div>
-  </div>
-</div>
+    </div>
     <script src="../static/js/script-dashboard.js"></script>
     <script src="../static/js/script.js"></script>
-    </section>   
+    </section>
     <footer class="footer">
         <div class="footer-icons">
             <a href="https://www.facebook.com/ExpenseTracker2.0" aria-label="Facebook">
-            <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-facebook-f"></i>
             </a>
             <a href="https://www.instagram.com/personal_expense_tracker/" aria-label="Instagram">
-            <i class="fab fa-instagram"></i>
+                <i class="fab fa-instagram"></i>
             </a>
             <a href="mailto:info@walletwatcher.com" aria-label="Email">
-            <i class="fas fa-envelope"></i>
+                <i class="fas fa-envelope"></i>
             </a>
             <p>Walletwatcher &copy 2026 All Rights Reserved</p>
         </div>
     </footer>
 </body>
-</html>    
+
+</html>
