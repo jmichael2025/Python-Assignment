@@ -58,13 +58,12 @@ def calendar_view():
                 day_totals[expense_date.day] += float(e["amount"])
         except:
             pass
-    print("Expenses:", expenses)
-    print("Day totals:", dict(day_totals))
+
 
     return render_template(
         "calendar.html",
         calendar_data=cal,
-        day_totals=day_totals,
+        day_totals=dict(day_totals),
         month_name=calendar.month_name[month],
         month=month,
         year=year

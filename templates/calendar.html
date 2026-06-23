@@ -63,13 +63,12 @@
                 <div class="day-number">
                     {{ day }}
                 </div>
-
-                {% if day_totals.get(day) %}
-                    <div class="expense-amount">
-                        €{{ "%.2f"|format(day_totals[day]) }}
-                    </div>
-                {% endif %}
-
+{% if day in day_totals %}
+    <div class="expense-amount">
+        €{{ "%.2f"|format(day_totals[day]) }}
+    </div>
+{% endif %}
+   
             </div>
 
         {% endif %}

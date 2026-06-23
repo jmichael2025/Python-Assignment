@@ -260,6 +260,24 @@ body{
     grid-template-columns: repeat(7, 1fr);
     gap: 5px;
 }
+.date-cell {
+    border: 1px solid #ccc;
+    min-height: 80px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.day-number {
+    font-weight: bold;
+}
+
+.expense-amount {
+    margin-top: 5px;
+    color: green;
+    font-size: 12px;
+    font-weight: bold;
+}
 .dates div {
     height: 60px;
     padding: 5px;
