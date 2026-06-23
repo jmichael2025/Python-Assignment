@@ -8,41 +8,73 @@
     <canvas id="expensePie" width="200" height="200"></canvas>
 
     <script>
-        // Pass Flask session data to JS
-        const expenses = {{ expenses | tojson }};
-        // Aggregate totals by category
-        const categoryTotals = {};
-        debugger;
-        expenses.forEach(exp => {
-            if (!categoryTotals[exp.category]) categoryTotals[exp.category] = 0;
-            categoryTotals[exp.category] += exp.amount;
-        });
 
-        const labels = Object.keys(categoryTotals);
-        const data = Object.values(categoryTotals);
-
-        // Render pie chart
-        const ctx = document.getElementById('expensePie').getContext('2d');
-        new Chart(ctx, {
-            type: 'pie',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Expenses by Category',
-                    data: data,
-                    backgroundColor: [
-                        '#FF6384', '#36A2EB', '#FFCE56',
-                        '#4BC0C0', '#9966FF', '#FF9F40'
-                    ]
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: { position: 'bottom' }
-                }
-            }
-        });
     </script>
 </body>
 </html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>WalletWatcher</title>
+    <link rel="stylesheet" href="../static/css/dashboard.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-left">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo" alt="Logo">
+        </div>
+
+        <div class="nav-center">
+            <h1 class="main-heading">Wallet Watcher</h1>
+            <h2>Personal Expense Tracker</h2>
+            <p>Get real-time updates and insights on your holdings.</p>
+
+        </div>
+
+        <div class="nav-right" id="navRight">
+            <span class="welcome-text">
+                Welcome {{ session['user'] }}
+            </span>
+            <a href="/calendar"> Calender </a>
+            <a href="/logout" class="logout-btn">Logout</a>
+            <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+                ☰
+            </a>
+        </div>
+    </nav>
+    <section>
+        <canvas id="expensePie" width="200" height="200"></canvas> 
+    </section>
+
+        <script src="../static/js/script.js"></script>
+
+
+
+        
+    <footer class="footer">
+        <div class="footer-icons">
+            <a href="https://www.facebook.com/ExpenseTracker2.0" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/personal_expense_tracker/" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="mailto:info@walletwatcher.com" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+            <p>Walletwatcher &copy 2026 All Rights Reserved</p>
+        </div>
+    </footer>
+</body>
+
+</html>
+
+
+

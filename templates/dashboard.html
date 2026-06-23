@@ -27,7 +27,7 @@
             <span class="welcome-text">
                 Welcome {{ session['user'] }}
             </span>
-            <a href="/calendar"> Calender </a>
+            <a href="/calendar" class="calendar-btn"> View Monthly Calendar</a>
             <a href="/logout" class="logout-btn">Logout</a>
             <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
                 ☰
@@ -48,26 +48,9 @@
 
         {% if session.expenses %}
 
-        <div class="container">
-
-            <div class="dashboard-left">
-
-                <h2 class="section-title">Expenses by Category</h2>
-
-                <iframe src="/expenses_chart" title="Expenses Chart" class="chart-frame" height="200" width="200">
-                </iframe>
-
-            </div>
-
             <div class="dashboard-right">
                 <h2 class="section-title">Expense Table</h2>
-
-                <div class="btn-container">
-                    <button onclick="changeMonth(-1)">Previous Month</button>
-                    <button onclick="goCurrent()">Current Month</button>
-                    <button onclick="changeMonth(1)">Next Month</button>
-                </div>
-
+                <div class="table container">
                 <table id="expenseTable">
 
                     <thead>
@@ -116,16 +99,17 @@
                     </tfoot>
 
                 </table>
+                </div>
                 <div class="actions">
-    <button onclick="window.location.href='/manager'">
-        Add Expense
-    </button>
-</div>
+                    <button onclick="window.location.href='/manager'">
+                        Add Expense
+                    </button>
+                </div>
 
             </div>
 
         </div>
-        
+
 
 
         {% else %}
@@ -133,12 +117,12 @@
         <div class="empty-state">
             <h3>No expenses added yet</h3>
             <p>Add your first expense to start tracking.</p>
-        
-        <div class="actions">
-            <button onclick="window.location.href='/manager'">
-                Add Expense
-            </button>
-        </div>
+
+            <div class="actions">
+                <button class="add-expenseBtn" onclick="window.location.href='/manager'">
+                    Add Expense
+                </button>
+            </div>
         </div>
 
 

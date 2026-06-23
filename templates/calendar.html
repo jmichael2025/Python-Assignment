@@ -9,25 +9,38 @@
 </head>
 <body>  
     <nav class="navbar">
-            <div class="nav-left">
-               <img src="../images/logo.png" alt="LOGO" class="logo">
-               
-            </div>
-            <div class="nav-center">
-                <h1 class="main-heading">Wallet Watcher</h1>
-                <h2>Personal Expense Tracker</h2>
-                <p>Get real-time updates and insights on your holdings.</p>
-                
-            </div>
-            <div class="nav-right" id="Topnav">
-                <a href="dashboard.html">Dashboard</a>
-                <a href="/logout">Logout</a>
+        <div class="nav-left">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo" alt="Logo">
+        </div>
+
+        <div class="nav-center">
+            <h1 class="main-heading">Wallet Watcher</h1>
+            <h2>Personal Expense Tracker</h2>
+            <p>Get real-time updates and insights on your holdings.</p>
+
+        </div>
+
+        <div class="nav-right" id="navRight">
+            <span class="welcome-text">
+                Welcome {{ session['user'] }}
+            </span>
+            
+                <a href="/dashboard" class="nav-btn">Dashboard</a>
+                <a href="/logout" class="logout-btn">Logout</a>
+                <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+                ☰
+            </a>
             </div>
     </nav>
     <section>
        <div class="calendar">
         <div class="header">
-        <h2>April 2026</h2>
+        <h2>{{ month_name }} {{ year }}</h2>
+        <div class="btn-container">
+    <a href="/calendar?move=prev">Previous</a>
+    <a href="/calendar?move=current">Current Month</a>
+    <a href="/calendar?move=next">Next</a>
+</div>
         </div>
 
   <div class="days">
@@ -35,19 +48,39 @@
     <div>Thu</div><div>Fri</div><div>Sat</div>
   </div>
 
-  <div class="dates">
-    <div></div>
-    <div></div>
-    <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div>
-    <div>6</div><div>7</div><div>8</div><div>9</div><div>10</div>
-    <div>11</div><div>12</div><div>13</div><div>14</div><div>15</div>
-    <div>16</div><div>17</div><div>18</div><div>19</div><div>20</div>
-    <div>21</div><div>22</div><div>23</div><div>24</div><div>25</div>
-    <div>26</div><div>27</div><div>28</div><div>29</div><div>30</div>
-    <div>31</div>
-  </div>
+<div class="dates">
+
+{% for week in calendar_data %}
+
+    {% for day in week %}
+
+        {% if day == 0 %}
+            <div class="empty"></div>
+
+        {% else %}
+            <div class="date-cell">
+
+                <div class="day-number">
+                    {{ day }}
+                </div>
+
+                {% if day_totals.get(day) %}
+                    <div class="expense-amount">
+                        €{{ "%.2f"|format(day_totals[day]) }}
+                    </div>
+                {% endif %}
+
+            </div>
+
+        {% endif %}
+
+    {% endfor %}
+
+{% endfor %}
+
 </div>
     </section>   
+    <script src="../static/js/script.js"></script>
     <footer class="footer">
         <div class="footer-icons">
             <a href="https://www.facebook.com/ExpenseTracker2.0" aria-label="Facebook">

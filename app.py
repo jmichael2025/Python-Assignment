@@ -1,6 +1,9 @@
 from flask import Flask, redirect, render_template, request, session, url_for, Blueprint
 from dashboard import dashboard_bp  
 import os
+from datetime import datetime
+import calendar
+from collections import defaultdict
 
 app = Flask(__name__)  
 app.secret_key = "mysecret3453453"
@@ -20,10 +23,50 @@ def dashboard():
     return render_template('dashboard.html')
 
 @app.route("/calendar")
-def calendar():
-    if 'user' not in session:
-        return redirect(url_for('login'))
-    return render_template('calendar.html') 
+def calendar_view():
+
+    expenses = session.get("expenses", [])
+    today = datetime.now()
+
+    # default current month
+    month = today.month
+    year = today.year
+
+    move = request.args.get("move")
+
+    if move == "prev":
+        month -= 1
+        if month == 0:
+            month = 12
+            year -= 1
+
+    elif move == "next":
+        month += 1
+        if month == 13:
+            month = 1
+            year += 1
+
+    cal = calendar.monthcalendar(year, month)
+
+    day_totals = defaultdict(float)
+
+    for e in expenses:
+        try:
+            expense_date = datetime.strptime(e["date"], "%Y-%m-%d")
+
+            if expense_date.month == month and expense_date.year == year:
+                day_totals[expense_date.day] += float(e["amount"])
+        except:
+            pass
+
+    return render_template(
+        "calendar.html",
+        calendar_data=cal,
+        day_totals=day_totals,
+        month_name=calendar.month_name[month],
+        month=month,
+        year=year
+    )
 
 @app.route("/manager")
 def manager():

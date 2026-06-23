@@ -5,7 +5,9 @@
         debugger;
         expenses.forEach(exp => {
             if (!categoryTotals[exp.category]) categoryTotals[exp.category] = 0;
-            categoryTotals[exp.category] += exp.amount;
+            categoryTotals[exp.category] += parseFloat(exp.amount);
+            const expenses = {{ expenses | tojson }};
+            console.log(expenses);
         });
 
         const labels = Object.keys(categoryTotals);
@@ -32,4 +34,7 @@
                     legend: { position: 'bottom' }
                 }
             }
-        });
+        }
+    )
+
+
