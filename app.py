@@ -58,6 +58,8 @@ def calendar_view():
                 day_totals[expense_date.day] += float(e["amount"])
         except:
             pass
+    print("Expenses:", expenses)
+    print("Day totals:", dict(day_totals))
 
     return render_template(
         "calendar.html",
@@ -67,6 +69,7 @@ def calendar_view():
         month=month,
         year=year
     )
+
 
 @app.route("/manager")
 def manager():
