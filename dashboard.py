@@ -5,30 +5,35 @@ dashboard_bp = Blueprint("dashboard", __name__)
 
 @dashboard_bp.route("/dashboard")
 def view_dashboard():
-    expenses = session.get('expenses', [])
+
+    
+    expenses = session.get("expenses", [])
+
     month = request.args.get("month")
 
     if not month:
         month = datetime.now().strftime("%Y-%m")
 
     
-    # Filter by month
     filtered = []
     total = 0
 
     for e in expenses:
-        if e["date"].startswith(month):
+        if "date" in e and e["date"][:7] == month:
             filtered.append(e)
-            total += float(e["amount"])
-    
+
+            
+            try:
+                total += float(e.get("amount", 0))
+            except:
+                pass
 
     return render_template(
         "dashboard.html",
-        expenses=expenses,
+        expenses=filtered,
         total=total,
         current_month=month
     )
-
 
 @dashboard_bp.route("/add", methods=["POST"])
 def add_expense():

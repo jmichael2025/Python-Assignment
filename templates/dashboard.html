@@ -52,14 +52,15 @@
 
             <div class="dashboard-left">
 
-                <h2>Expenses by Category</h2>
+                <h2 class="section-title">Expenses by Category</h2>
 
-                <iframe src="/expenses_chart" title="Expenses Chart" class="chart-frame" height="400" width="400">
+                <iframe src="/expenses_chart" title="Expenses Chart" class="chart-frame" height="200" width="200">
                 </iframe>
 
             </div>
 
             <div class="dashboard-right">
+                <h2 class="section-title">Expense Table</h2>
 
                 <div class="btn-container">
                     <button onclick="changeMonth(-1)">Previous</button>
@@ -115,25 +116,33 @@
                     </tfoot>
 
                 </table>
+                <div class="actions">
+    <button onclick="window.location.href='/manager'">
+        Add Expense
+    </button>
+</div>
 
             </div>
 
         </div>
+        
+
 
         {% else %}
 
         <div class="empty-state">
             <h3>No expenses added yet</h3>
             <p>Add your first expense to start tracking.</p>
-        </div>
-
-        {% endif %}
-
+        
         <div class="actions">
-            <button onclick="window.location.href='/manager'" class="add-button">
+            <button onclick="window.location.href='/manager'">
                 Add Expense
             </button>
         </div>
+        </div>
+
+
+        {% endif %}
 
     </section>
     <script src="../static/js/script-dashboard.js"></script>
