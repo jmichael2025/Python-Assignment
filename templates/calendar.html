@@ -2,9 +2,9 @@
 <head>
     <meta charset="UTF-8">
     <title>WalletWatcher</title>
-    <link rel="stylesheet" href="../static/css/calendar.css"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/calendar.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>  
@@ -36,10 +36,19 @@
        <div class="calendar">
         <div class="header">
         <h2>{{ month_name }} {{ year }}</h2>
-        <div class="btn-container">
-    <a href="/calendar?move=prev">Previous</a>
-    <a href="/calendar?move=current">Current Month</a>
-    <a href="/calendar?move=next">Next</a>
+   <div class="btn-container">
+<a href="/calendar?move=prev&month={{ month }}&year={{ year }}">
+    Previous
+</a>
+
+<a href="/calendar?move=current">
+    Current Month
+</a>
+
+<a href="/calendar?move=next&month={{ month }}&year={{ year }}">
+    Next
+</a>
+ 
 </div>
         </div>
 
@@ -79,7 +88,7 @@
 
 </div>
     </section>   
-    <script src="../static/js/script.js"></script>
+    <!--<script src="../static/js/script.js"></script>-->
     <footer class="footer">
         <div class="footer-icons">
             <a href="https://www.facebook.com/ExpenseTracker2.0" aria-label="Facebook">

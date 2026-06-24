@@ -233,8 +233,9 @@ body{
 }
 
 .calendar {
-    max-width: 700px;
-    margin: 20px auto;
+    width:100%;
+    max-width: 900px;
+    margin: auto;
     padding: 15px;
     background: white;
     border-radius: 10px;
@@ -246,6 +247,39 @@ body{
     font-size: 20px;
     color: #046608;
 }
+.btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 15px 0;
+    flex-wrap: wrap;
+}
+
+.btn-container a {
+    background-color: #046608;
+    color: white;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 1px solid #046608;
+}
+
+.btn-container a:hover {
+    background-color: white;
+    color: #046608;
+    transform: translateY(-2px);
+}
+
+.btn-container a:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {}
+
+   
 .days {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -259,13 +293,24 @@ body{
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 5px;
+    width:100%;
 }
 .date-cell {
-    border: 1px solid #ccc;
+    border: 1px solid #c8dacf;
     min-height: 80px;
     padding: 5px;
     display: flex;
     flex-direction: column;
+}
+.date-cell, .empty {
+    min-height: 60px;
+    background: #fff;
+    border: 1px solid #f9f6f6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
 }
 
 .day-number {
@@ -281,12 +326,11 @@ body{
 .dates div {
     height: 60px;
     padding: 5px;
-    border: 1px solid #eee;
     border-radius: 6px;
     font-size: 12px;
     text-align: left;
     position: relative;
-    overflow: hidden;
+   
 }
 .day-number {
     font-weight: bold;

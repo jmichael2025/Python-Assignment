@@ -49,9 +49,9 @@ def calendar_view():
     expenses = session.get("expenses", [])
     today = datetime.now()
 
-    # default current month
-    month = today.month
-    year = today.year
+    # Start from URL values if present
+    month = int(request.args.get("month", today.month))
+    year = int(request.args.get("year", today.year))
 
     move = request.args.get("move")
 
@@ -67,29 +67,34 @@ def calendar_view():
             month = 1
             year += 1
 
+    elif move == "current":
+        month = today.month
+        year = today.year
+
+    # STEP 3: ONLY apply manual override if NO move
+    else:
+        if request.args.get("month") and request.args.get("year"):
+            month = int(request.args.get("month"))
+            year = int(request.args.get("year"))
+
     cal = calendar.monthcalendar(year, month)
 
     day_totals = defaultdict(float)
 
     for e in expenses:
-        try:
-            expense_date = datetime.strptime(e["date"], "%Y-%m-%d")
+        expense_date = datetime.strptime(e["date"], "%Y-%m-%d")
 
-            if expense_date.month == month and expense_date.year == year:
-                day_totals[expense_date.day] += float(e["amount"])
-        except:
-            pass
-
+        if expense_date.month == month and expense_date.year == year:
+            day_totals[expense_date.day] += float(e["amount"])
 
     return render_template(
         "calendar.html",
         calendar_data=cal,
-        day_totals=dict(day_totals),
+        day_totals=day_totals,
         month_name=calendar.month_name[month],
         month=month,
         year=year
     )
-
 
 @app.route("/manager")
 def manager():
