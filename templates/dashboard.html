@@ -69,7 +69,7 @@
 
                         <tr>
                             <td>{{ expense.id }}</td>
-                            <td>{{ expense.date }}</td>
+                            <td>{{ expense.date_obj.strftime("%d-%m-%Y") }}</td>
                             <td>{{ expense.category }}</td>
                             <td>{{ expense.amount }}</td>
 

@@ -1,16 +1,17 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>WalletWatcher</title>
-    <link rel="stylesheet" href="../static/css/editor.css"/>
+    <title>Edit Expense - WalletWatcher</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/editor.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
 </head>
 <body>  
     <nav class="navbar">
             <div class="nav-left">
-               <img src="../images/logo.png" alt="LOGO" class="logo">            
+              <img src="{{ url_for('static', filename='images/logo.png') }}" alt="LOGO" class="logo">              
             </div>
             <div class="nav-center">
                 <h1 class="main-heading">Wallet Watcher</h1>
@@ -18,48 +19,93 @@
                 <p>Get real-time updates and insights on your holdings.</p>
                 
             </div>
-            <div class="nav-right">
-                <a href="dashboard.html">Dashboard</a>
-                <a href="calendar.html">Calendar</a>
+            <div class="nav-right" id="navRight">
+                <a href="/dashboard">Dashboard</a>
+                <a href="/calendar">Calendar</a>
                 <a href="/logout">Logout</a>
+                <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+                    ☰
+                </a>
             </div>
     </nav>
-    <section><div class="edit-container">
-            <table id="expenseTable">
+    <section>
+
+<div class="edit-container">
+
+    <div class="edit-card">
+
+        <h3>Expense Editor</h3>
+
+        <p>
+            The expense manager page allows users to track spending easily.
+            Edit the selected expense and update details below.
+        </p>
+
+        {% if expense %}
+
+        <form class="edit-form" method="POST" action="/update/{{ expense.id }}">
+
+            <div class="form-group">
+                <label>Date</label>
+                <input type="date" name="date" value="{{ expense.date }}" required>
+            </div>
+
+            
+             <div class="form-group">
+    <label>Category</label>
+
+    <select name="category" required>
+        <option value="" disabled>Select Category</option>
+
+        <option value="Food" {% if expense.category == "Food" %}selected{% endif %}>Food</option>
+        <option value="Fuel" {% if expense.category == "Fuel" %}selected{% endif %}>Fuel</option>
+        <option value="Cloths" {% if expense.category == "Cloths" %}selected{% endif %}>Cloths</option>
+        <option value="Entertainment" {% if expense.category == "Entertainment" %}selected{% endif %}>Entertainment</option>
+        <option value="Other" {% if expense.category == "Other" %}selected{% endif %}>Other</option>
+
+    </select>
+</div>   
+
+            <div class="form-group">
+                <label>Amount</label>
+                <input type="number" step="0.01" name="amount" value="{{ expense.amount }}" required>
+            </div>
+
+            <div class="btn-group">
+                <button type="submit" class="update-btn">Update Expense</button>
+
+                <button type="button" class="cancel-btn"
+                        onclick="window.location.href='/dashboard'">
+                    Cancel
+                </button>
+            </div>
+
+        </form>
+
+        {% else %}
+
+        <p class="error-msg">
+            Expense not found.
+        </p>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+</section>
+    <!--<section><div class="edit-container">
+            
+            <div class="edit-card">
+                
                 <h3>Expense Editor</h3>
 
                 <p>The expense manager page allows users to track spending easily. Simply press “Add Expense,” enter the expense details, and save it. 
                     To remove an expense, select the desired entry from the list and press “Delete Expense.” 
                     This helps users maintain accurate and organized financial records quickly and efficiently.</p>
 
-                <!--<div class="btn-container" id="btnContainer">  
-                        
-                <button onclick="changeMonth(-1)">Previous</button>
-                <button>Current Month</button>
-                <button onclick="changeMonth(1)">Next</button>
-                
-                </div>
-           
-                <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Category</th>
-                    <th>Amount</th>
-                    
-                </tr>
-                </thead>
-                <tbody>
-
-                </tbody>
-            </table>
-
-        <div class="actions">           
-            <button onclick="addRow()">Add Expense</button>
-            <button onclick="removeRow()">Remove Expense</button>
-        </div>
-        </div>-->
-{% if expense %}
-
+          {% if expense %}      
         <form method="POST" action="/update/{{ expense.id }}">
 
             <label>Date</label>
@@ -96,7 +142,10 @@
         <script src="../static/js/script-editor.js"></script>
  
 
-</section>   
+</section> -->
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
     <footer class="footer">
         <div class="footer-icons">
             <a href="https://www.facebook.com/ExpenseTracker2.0" aria-label="Facebook">

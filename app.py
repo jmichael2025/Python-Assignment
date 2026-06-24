@@ -35,7 +35,13 @@ def process_login():
 def dashboard():
     if 'user' not in session:
         return redirect(url_for('login'))
-    return render_template('dashboard.html')
+
+    expenses = session.get("expenses", [])
+
+    for e in expenses:
+        e["date_obj"] = datetime.strptime(e["date"], "%Y-%m-%d")
+
+    return render_template("dashboard.html", expenses=expenses)
 
 @app.route("/calendar")
 def calendar_view():
