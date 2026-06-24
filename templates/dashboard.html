@@ -1,9 +1,10 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <title>WalletWatcher</title>
-    <link rel="stylesheet" href="../static/css/dashboard.css" />
+    <link rel="stylesheet" href="../static/css/dashboard.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -27,8 +28,8 @@
             <span class="welcome-text">
                 Welcome {{ session['user'] }}
             </span>
-            <a href="/calendar" class="calendar-btn"> View Monthly Calendar</a>
-            <a href="/logout" class="logout-btn">Logout</a>
+            <a href="/calendar" class="nav-btn"> View Monthly Calendar</a>
+            <a href="/logout" class="nav-btn">Logout</a>
             <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
                 ☰
             </a>
@@ -37,12 +38,16 @@
     <section class="dashboard-section">
 
         <div class="dashboard-description">
-            <p>
-                This dashboard displays monthly expenses in a clear, organized view.
-                Users can navigate between months using Previous and Next buttons.
-                It also includes options to add new expenses or delete existing entries,
-                allowing easy tracking and management of spending with simple,
-                interactive controls for a smooth user experience.
+            <p>The WalletWatcher Dashboard gives a simple view of all personal expenses in one place. Users can see
+                date, category, amount, and total spending for quick financial tracking. Expenses can be added, edited,
+                or deleted easily, and all updates reflect instantly.
+
+                The dashboard is linked with a Calendar view to help users track monthly expenses. By selecting
+                different months, users can see daily spending and understand their financial patterns more clearly.
+                This makes budgeting and planning easier.
+
+                Overall, WalletWatcher helps users manage expenses efficiently with a clean layout, real-time updates,
+                and simple monthly insights.
             </p>
         </div>
 
@@ -80,29 +85,13 @@
                                 </a>
 
                                 <form method="POST" action="/deleteexpense/{{ expense.id }}">
-                                    <button type="submit" class="expenseTable-btn" 
-                                            onclick="return confirm('Are you sure you want to delete this expense?');" >
+                                    <button type="submit" class="expenseTable-btn"
+                                        onclick="return confirm('Are you sure you want to delete this expense?');">
                                         Delete
                                     </button>
                                 </form>
 
                             </td>
-
-                            <!--<a href="/edit/{{ expense.id }}" class="expenseTable-btn">
-                                    Edit
-                                </a>
-
-                                <form method="POST" action="/deleteexpense/{{ expense.id }}" class="expenseTable-btn">
-
-                                    <button onclick="return confirm('Are you sure you want to delete this expense?');">
-                                        Delete
-                                    </button>
-
-                                </form>
-
-                            </td>
-                            </td>-->
-
                         </tr>
 
                         {% endfor %}
@@ -132,10 +121,6 @@
 
         </div>
 
-        </div>
-
-
-
         {% else %}
 
         <div class="empty-state">
@@ -148,7 +133,6 @@
                 </button>
             </div>
         </div>
-
 
         {% endif %}
 

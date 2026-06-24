@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Edit Expense - WalletWatcher</title>
@@ -20,9 +21,9 @@
                 
             </div>
             <div class="nav-right" id="navRight">
-                <a href="/dashboard">Dashboard</a>
-                <a href="/calendar">Calendar</a>
-                <a href="/logout">Logout</a>
+                <a href="/dashboard" class="nav-btn" >Dashboard</a>
+                <a href="/calendar"class="nav-btn" >Calendar</a>
+                <a href="/logout" class="nav-btn">Logout</a>
                 <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
                     ☰
                 </a>
@@ -37,8 +38,8 @@
         <h3>Expense Editor</h3>
 
         <p>
-            The expense manager page allows users to track spending easily.
-            Edit the selected expense and update details below.
+            The Expense Editor allows users to update existing expenses easily. Select an expense from the dashboard and click “Edit” to open the editor page. Modify the date, category, or amount as needed, then click “Update Expense” to save changes. 
+            Updates are instantly reflected in the dashboard and calendar views.
         </p>
 
         {% if expense %}
@@ -156,7 +157,8 @@
             </a>
             <a href="mailto:info@walletwatcher.com" aria-label="Email">
             <i class="fas fa-envelope"></i>
-            </a>
+            </a><p>Walletwatcher &copy 2026 All Rights Reserved</p>
+
         </div>
     </footer>
 </body>

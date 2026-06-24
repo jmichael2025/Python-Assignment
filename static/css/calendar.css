@@ -15,7 +15,7 @@ body{
     justify-content: space-between;
     align-items: center;
     background-color: #04660893;
-    padding: 15px 20px;
+    padding: 30px 30px;
 }
 
 .nav-left {
@@ -37,13 +37,16 @@ body{
 
 .nav-center .main-heading {
     margin: 0;
-    font-size: 2rem;
+    font-size: 2.2rem;
 }
 
 .nav-center h2 {
     margin: 5px 0;
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
+.nav-center p {
+    margin: 5px 0;
+    font-size: 1.1rem;}
 
 .nav-right {
     display: flex;
@@ -57,24 +60,25 @@ body{
     text-decoration: none;
     font-size: 0.95rem;
 }
+.nav-btn{
+border: 1px solid white;
+    padding: 6px 12px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.nav-btn:hover {
+    background-color: white;
+    color: #046608;
+}
 
 .welcome-text {
     font-weight: bold;
 }
 
-.logout-btn {
-    background-color: rgb(15, 22, 5);
-    color: white;
-    padding: 6px 12px;
-    border-radius: 5px;
-    text-decoration: none;
-    border: 1px solid white;
-}
 
-.logout-btn:hover {
-    background-color: white;
-    color: #046608;
-}
 .icon {
     display: none;
     font-size: 2rem;
