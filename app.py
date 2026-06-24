@@ -177,6 +177,13 @@ def update_expense(expense_id):
 
     session["expenses"] = expenses
 
+    total = 0
+
+    for expense in expenses:
+        total += float(expense["amount"])
+
+    session["total"] = total
+
     return redirect(url_for("dashboard"))
 
 

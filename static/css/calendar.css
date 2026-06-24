@@ -75,16 +75,17 @@ body{
     background-color: white;
     color: #046608;
 }
-
 .icon {
     display: none;
-    font-size: 1.8rem;
+    font-size: 2rem;
     cursor: pointer;
+    color: white;
 }
+/*
 
 /* =========================
    MOBILE NAVIGATION
-   ========================= */
+   ========================= */ 
 
 @media screen and (max-width: 768px) {
 
@@ -198,29 +199,6 @@ body{
     }
 
 
-/* Mobile Styles */
-@media screen and (max-width: 600px) {
-  .nav-right a:not(:first-child) {display: none;}
-  .nav-right .icon {
-    float: right;
-    display: block;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .nav-right.responsive {position: relative;}
-  .nav-right.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .nav-right.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
-
 @media (max-width: 600px) {
   .dates div {
     padding: 10px;
@@ -277,7 +255,26 @@ body{
     transform: translateY(0);
 }
 
-@media (max-width: 768px) {}
+@media (max-width: 768px) {
+
+    .btn-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .btn-container a {
+        width: 90%;
+        max-width: 250px;
+        text-align: center;
+        padding: 12px;
+        font-size: 0.95rem;
+        box-sizing: border-box;
+    }
+
+}
 
    
 .days {
@@ -295,17 +292,12 @@ body{
     gap: 5px;
     width:100%;
 }
-.date-cell {
-    border: 1px solid #c8dacf;
-    min-height: 80px;
-    padding: 5px;
-    display: flex;
-    flex-direction: column;
-}
-.date-cell, .empty {
+.date-cell,
+.empty {
     min-height: 60px;
     background: #fff;
-    border: 1px solid #f9f6f6;
+    border: 1px solid #046608;
+    border-radius: 4px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -365,7 +357,6 @@ body{
     }
 }
 /* Footer */
-/* Footer */
 .footer {
     background-color: #04660893;
     padding: 15px 10px;
@@ -378,7 +369,7 @@ body{
     justify-content: center;
     align-items: center;
     gap: 1.2rem;
-    flex-wrap: wrap;   /* IMPORTANT */
+    flex-wrap: wrap;
     margin-bottom: 10px;
 }
    .footer-icons a {
@@ -423,4 +414,3 @@ body{
         padding: 0 10px;
     }
 }
-   
