@@ -16,6 +16,21 @@ def index():
 def login():
     return render_template('login.html')
 
+@app.route("/process_login", methods=['POST'])
+def process_login():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+
+        if username == "admin" and password == "admin":
+            session['user'] = username
+            print("Login successful")
+            return redirect(url_for('dashboard'))
+        else:
+            return render_template('login.html', error='Invalid username or password')
+
+    return render_template('login.html')
+
 @app.route("/dashboard")
 def dashboard():
     if 'user' not in session:
@@ -118,21 +133,40 @@ def delete_expense(expense_id):
     
     return redirect(url_for("dashboard"))
 
+@app.route("/edit/<int:expense_id>")
+def edit_expense(expense_id):
 
-@app.route("/process_login", methods=['POST'])
-def process_login():
-    if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
+    expenses = session.get("expenses", [])
 
-        if username == "admin" and password == "admin":
-            session['user'] = username
-            print("Login successful")
-            return redirect(url_for('dashboard'))
-        else:
-            return render_template('login.html', error='Invalid username or password')
+    expense_to_edit = None
 
-    return render_template('login.html')
+    for expense in expenses:
+        if expense["id"] == expense_id:
+            expense_to_edit = expense
+            break
+
+    return render_template(
+        "editor.html",
+        expense=expense_to_edit
+    )
+@app.route("/update/<int:expense_id>", methods=["POST"])
+def update_expense(expense_id):
+
+    expenses = session.get("expenses", [])
+
+    for expense in expenses:
+
+        if expense["id"] == expense_id:
+
+            expense["date"] = request.form["date"]
+            expense["category"] = request.form["category"]
+            expense["amount"] = request.form["amount"]
+
+            break
+
+    session["expenses"] = expenses
+
+    return redirect(url_for("dashboard"))
 
 
 if __name__ == "__main__":

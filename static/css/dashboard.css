@@ -243,7 +243,7 @@ body { margin:10px;
 }
 .expenseTable-btn {
     display: inline-block;
-    background-color: #081f17;
+    background-color:#046608 ;
     color: white;
     padding: 5px 10px;
     border: none;
@@ -256,7 +256,7 @@ body { margin:10px;
     box-shadow: none;
 }
 .expenseTable-btn:hover {
-    background-color: #046608;
+    background-color:#081f17 ;
     color: white;
 }
 .actions {
@@ -265,7 +265,7 @@ body { margin:10px;
    width: 100%;
 }
 .actions button {
-    background-color: #081f17;
+    background-color: #046608;
     color: white;
     border: none;
     padding: 10px 15px;
@@ -274,7 +274,7 @@ body { margin:10px;
     margin-top: 15px;
 }
 .actions button:hover {
-    background-color: #046608;
+    background-color: #081f17;
     color: white;
 }
 @media (max-width: 768px) {
