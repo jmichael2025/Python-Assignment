@@ -316,7 +316,7 @@ body { margin:10px;
     justify-content: center;
     align-items: center;
     gap: 1.2rem;
-    flex-wrap: wrap;   /* IMPORTANT */
+    flex-wrap: wrap;
     margin-bottom: 10px;
 }
    .footer-icons a {

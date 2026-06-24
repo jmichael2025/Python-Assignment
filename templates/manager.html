@@ -1,47 +1,51 @@
-
 <head>
     <meta charset="UTF-8">
     <title>Edit Expense - WalletWatcher</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/editor.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/manager.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-<body>  
+
+<body>
     <nav class="navbar">
 
-            <div class="nav-left">
-               <img src="../images/logo.png" alt="LOGO" class="logo"> 
-            </div>
+        <div class="nav-left">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="LOGO" class="logo">
+        </div>
 
-            <div class="nav-center">
-                <h1 class="main-heading">Wallet Watcher</h1>
-                <h2>Personal Expense Tracker</h2>
-                <p>Get real-time updates and insights on your holdings.</p>   
-            </div>
+        <div class="nav-center">
+            <h1 class="main-heading">Wallet Watcher</h1>
+            <h2>Personal Expense Tracker</h2>
+            <p>Get real-time updates and insights on your holdings.</p>
+        </div>
 
-            <div class="nav-right" id="Topnav">
-                <a href="/static/css/dashboard.css">Dashboard</a>
-                <a href="calendar.html">Calendar</a>
-                <a href="/logout">Logout</a>
-            </div>
+        <div class="nav-right" id="navRight">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/calendar">Calendar</a>
+            <a href="/logout">Logout</a>
+            <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+                ☰
+            </a>
+        </div>
     </nav>
     <section>
+        <!--
         <div class="container">
-            <table id="expenseTable">
-                <h3>Manage Expenses</h3>  
-                <p>The expense manager page allows users to track spending easily. Simply press “Add Expense,” enter the expense details, and save it. 
+            <table id="expense-card">
+                <h3>Manage Expenses</h3>
+                <p>The expense manager page allows users to track spending easily. Simply press “Add Expense,” enter the
+                    expense details, and save it.
                 </p>
                 <h4>Add Expense</h4>
 
-                <div class="btn-container" id="btnContainer"> 
-                 
+                <div class="btn-container" id="btnContainer">
+
                     <form method="POST" action="/addexpense">
                         Date:
                         <input type="date" name="date" required>
-                        Category:    
+                        Category:
                         <select name="category" required>
                             <option value="disabled" selected>Select Category</option>
                             <option>Food</option>
@@ -49,34 +53,82 @@
                             <option>Cloths</option>
                             <option>Entertainment</option>
                             <option>Other</option>
-                            </select>
+                        </select>
                         Amount:
                         <input type="number" name="amount" placeholder="Amount" required>
                         <button class="add-expenseBtn" type="submit">Add Expense</button>
                     </form>
                 </div>
-                
-                </div>  
-            </table> 
+
         </div>
+        </table>
         </div>
+        </div>-->
+        <div class="container">
+
+    <div class="expense-card">
+
+        <h3>Manage Expenses</h3>
+
+        <p>
+            The expense manager page allows users to track spending easily.
+            Simply press “Add Expense,” enter the expense details, and save it.
+        </p>
+
+        <h4>Add Expense</h4>
+
+        <form class="expense-form" method="POST" action="/addexpense">
+
+            <div class="form-group">
+                <label>Date</label>
+                <input type="date" name="date" required>
+            </div>
+
+            <div class="form-group">
+                <label>Category</label>
+                <select name="category" required>
+                    <option value="" disabled selected>Select Category</option>
+                    <option>Food</option>
+                    <option>Fuel</option>
+                    <option>Cloths</option>
+                    <option>Entertainment</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Amount</label>
+                <input type="number" name="amount" placeholder="Amount" required>
+            </div>
+
+            <button class="add-expenseBtn" type="submit">
+                Add Expense
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
         <script src="../static/js/script-manager.js"></script>
- 
-    </section> 
-    
+
+    </section>
+
     <footer class="footer">
         <div class="footer-icons">
             <a href="https://www.facebook.com/ExpenseTracker2.0" aria-label="Facebook">
-            <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-facebook-f"></i>
             </a>
             <a href="https://www.instagram.com/personal_expense_tracker/" aria-label="Instagram">
-            <i class="fab fa-instagram"></i>
+                <i class="fab fa-instagram"></i>
             </a>
             <a href="mailto:info@walletwatcher.com" aria-label="Email">
-            <i class="fas fa-envelope"></i>
+                <i class="fas fa-envelope"></i>
             </a>
             <p>Walletwatcher &copy 2026 All Rights Reserved</p>
         </div>
     </footer>
 </body>
+
 </html>
