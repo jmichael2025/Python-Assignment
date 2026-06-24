@@ -134,12 +134,6 @@ def process_login():
 
     return render_template('login.html')
 
-@app.route('/expenses_chart')
-def expenses_chart():
-    expenses = session.get('expenses', [])
-    return render_template('expenses_chart.html', expenses=expenses)
-
-app.register_blueprint(dashboard_bp)
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))

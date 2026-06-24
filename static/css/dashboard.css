@@ -205,34 +205,8 @@ body { margin:10px;
     text-align: center;
 }
 
-.right button {
-  padding: 5px 10px;
-  color: white;
-  background-color: #081f17;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  flex: 1 1 150px;
-  padding: 5px 5px;
-  justify-content: space-between;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;  
-  font-size: 1.3rem;    
-  color: white;
-}
-.add-expenseBtn{
-  padding: 5px 10px;
-  color: white;
-  background-color: #081f17;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  flex: 1 1 150px;
-  padding: 5px 5px;
-  justify-content: space-between;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;  
-  font-size: 1.3rem;    
-  color: white;
-}
-
 /* Table Styling */
+
 .table-scroll {
     width: 100%;
     overflow-x: auto;
@@ -261,24 +235,47 @@ body { margin:10px;
 #expenseTable th {
     background: #84aa91;
 }
+
+#expenseTable form {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+.expenseTable-btn {
+    display: inline-block;
+    background-color: #081f17;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 0.6rem;
+    margin-right: 5px;
+    outline: none;
+    box-shadow: none;
+}
+.expenseTable-btn:hover {
+    background-color: #046608;
+    color: white;
+}
 .actions {
     display: flex;
     justify-content: center;
    width: 100%;
 }
-
-.table-actions {
-    display: flex;
-    justify-content: center;
-    margin-top: 15px;
-}
 .actions button {
-    background-color: #046608;
+    background-color: #081f17;
     color: white;
     border: none;
-    padding: 12px 25px;
+    padding: 10px 15px;
     border-radius: 6px;
     cursor: pointer;
+    margin-top: 15px;
+}
+.actions button:hover {
+    background-color: #046608;
+    color: white;
 }
 @media (max-width: 768px) {
 
@@ -289,7 +286,8 @@ body { margin:10px;
 
     #expenseTable {
         width: max-content;
-        
+        min-width: 100%;
+        border-collapse: collapse;
     }
     #expenseTable td,
     #expenseTable th {
