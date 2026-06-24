@@ -1,5 +1,5 @@
-
-  let currentMonth = "{{ current_month }}";
+/* jshint esversion: 6 */
+let currentMonth = "{{ current_month }}";
 
 function changeMonth(offset) {
     let date = new Date(currentMonth + "-01");

@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>WalletWatcher</title>
-    <link rel="stylesheet" href="../static/css/dashboard.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 </head>
@@ -137,8 +137,8 @@
         {% endif %}
 
     </section>
-    <script src="../static/js/script-dashboard.js"></script>
-    <script src="../static/js/script.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/script-dashboard.js') }}"></script>
     <footer class="footer">
         <div class="footer-icons">
             <a href="https://www.facebook.com/ExpenseTracker2.0" aria-label="Facebook">
@@ -150,7 +150,7 @@
             <a href="mailto:info@walletwatcher.com" aria-label="Email">
                 <i class="fas fa-envelope"></i>
             </a>
-            <p>Walletwatcher &copy 2026 All Rights Reserved</p>
+            <p>Walletwatcher &copy; 2026 All Rights Reserved</p>
         </div>
     </footer>
 </body>

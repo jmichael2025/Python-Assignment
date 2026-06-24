@@ -1,7 +1,8 @@
-
-  body { margin:10px; 
-  font-family: Arial, sans-serif; 
-  background-color:white}
+body {
+    margin: 10px;
+    font-family: Arial, sans-serif;
+    background-color: white
+}
 
 
 /*navigation */
@@ -44,6 +45,7 @@
     margin: 5px 0;
     font-size: 1.1rem;
 }
+
 .nav-right {
     display: flex;
     align-items: center;
@@ -60,8 +62,9 @@
 .welcome-text {
     font-weight: bold;
 }
-.nav-btn{
-border: 1px solid white;
+
+.nav-btn {
+    border: 1px solid white;
     padding: 6px 12px;
     border-radius: 5px;
     color: white;
@@ -95,13 +98,13 @@ border: 1px solid white;
         width: 100%;
     }
 
-   
+
     .nav-right a:not(.icon),
     .welcome-text {
         display: none;
     }
 
-    
+
     .nav-right .icon {
         display: block;
         position: absolute;
@@ -111,7 +114,7 @@ border: 1px solid white;
         font-size: 2rem;
     }
 
-    
+
     .nav-right.responsive {
         display: flex;
         flex-direction: column;
@@ -126,7 +129,7 @@ border: 1px solid white;
         box-sizing: border-box;
     }
 
-   
+
     .nav-right.responsive .icon {
         display: none;
     }
@@ -152,6 +155,7 @@ border: 1px solid white;
         font-size: 0.9rem;
     }
 }
+
 /* container styling*/
 
 .container {
@@ -166,7 +170,7 @@ border: 1px solid white;
     background: white;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .expense-card h3,
@@ -220,15 +224,17 @@ border: 1px solid white;
         padding: 15px;
     }
 }
- /* Footer */
- .footer {
+
+/* Footer */
+.footer {
     background-color: #04660893;
     padding: 15px 10px;
     margin-top: 20px;
     width: 100%;
     text-align: center;
 }
-    .footer-icons {
+
+.footer-icons {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -236,7 +242,8 @@ border: 1px solid white;
     flex-wrap: wrap;
     margin-bottom: 10px;
 }
-   .footer-icons a {
+
+.footer-icons a {
     color: #00bcd4;
     font-size: 1.3rem;
     width: 42px;
@@ -249,12 +256,12 @@ border: 1px solid white;
     justify-content: center;
 
     transition: all 0.3s ease;
-} 
-    
+}
+
 .footer-icons a:hover {
     transform: translateY(-3px);
 }
-    
+
 .footer p {
     color: white;
     font-size: 1rem;
@@ -279,33 +286,46 @@ border: 1px solid white;
     }
 }
 
-  @media (max-width: 600px) {
-    table, thead, tbody, th, td, tr {
-      display: block;
+@media (max-width: 600px) {
+
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
     }
 
     th {
-      position: sticky;
-      top: 0;
-      background: #ddd;
+        position: sticky;
+        top: 0;
+        background: #ddd;
     }
 
     td {
-      border: none;
-      border-bottom: 1px solid #eee;
-      position: relative;
-      padding-left: 50%;
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
     }
 
     td::before {
-      position: absolute;
-      left: 10px;
-      top: 8px;
-      font-weight: bold;
+        position: absolute;
+        left: 10px;
+        top: 8px;
+        font-weight: bold;
     }
 
-    td:nth-of-type(1)::before { content: "Column 1"; }
-    td:nth-of-type(2)::before { content: "Column 2"; }
-    td:nth-of-type(3)::before { content: "Column 3"; }
-  }
- 
+    td:nth-of-type(1)::before {
+        content: "Column 1";
+    }
+
+    td:nth-of-type(2)::before {
+        content: "Column 2";
+    }
+
+    td:nth-of-type(3)::before {
+        content: "Column 3";
+    }
+}

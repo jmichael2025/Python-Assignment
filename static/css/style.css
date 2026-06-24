@@ -153,50 +153,77 @@
        margin-bottom: 10px;
    }
 
-
-   input[type=text],
-   input[type=password],
-   input[type=email] {
+   #login-form {
        width: 100%;
-       padding: 15px;
-       margin: 5px 0 22px 0;
-       display: inline-block;
-       border: none;
-       background: #f1f1f1;
+       max-width: 400px;
+       margin: 50px auto;
+       padding: 20px;
+       background: #fff;
+       border-radius: 10px;
+       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
    }
 
-   input[type=text]:focus,
-   input[type=password]:focus {
-       background-color: #ddd;
-       outline: none;
+   #login-form form {
+       display: flex;
+       flex-direction: column;
+       gap: 12px;
    }
 
+   /* Labels */
+   #login-form label {
+       font-weight: bold;
+       margin-top: 10px;
+   }
+
+   /* Inputs */
+   #login-form input {
+       width: 100%;
+       padding: 10px 12px;
+       font-size: 1rem;
+       border: 1px solid #ccc;
+       border-radius: 6px;
+       box-sizing: border-box;
+   }
+
+   /* Placeholder styling */
+   #login-form input::placeholder {
+       font-size: 0.9rem;
+       color: #888;
+   }
+
+   /* Button */
    .loginbtn {
-       background-color: #081f17;
+       background: #046608;
        color: white;
-       padding: 16px 20px;
-       margin: 8px 0;
+       padding: 10px;
        border: none;
+       border-radius: 6px;
        cursor: pointer;
-       width: 100%;
-       opacity: 0.9;
+       font-size: 1rem;
    }
 
-   .loginbtn:hover {
-       opacity: 1;
-   }
-
-   a {
-       color: rgb(226, 230, 234);
-   }
-
+   /* Error message */
    #lblError {
        color: red;
-       text-align: center;
-       display: block;
-       font-size: 14px;
        margin-top: 10px;
-       font-weight: bold;
+       text-align: center;
+   }
+
+   @media screen and (max-width: 600px) {
+       #login-form {
+           width: 90%;
+           margin: 30px auto;
+           padding: 15px;
+       }
+
+       #login-form input {
+           font-size: 0.95rem;
+           padding: 12px;
+       }
+
+       #login-form input::placeholder {
+           font-size: 0.85rem;
+       }
    }
 
    /* Footer */
