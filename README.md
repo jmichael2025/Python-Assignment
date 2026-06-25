@@ -3,6 +3,8 @@
 WalletWatcher Application
 
 WalletWatcher is a lightweight personal expense tracking web application built with ** Flask, Python, html, css nad Javascript. It helps allows users to manage daily expenses, track spending hadits,and view monthly insights through a clean dashboard.
+
+Application is deployed in render.com and link is available here: https://python-assignment-to8q.onrender.com/
 ---
 Features
 
@@ -64,9 +66,8 @@ Then open your browser at:
 http://127.0.0.1:5000
 
 
-🌐 Deployment (Render)
+🌐 WalletWatcher is configured to run on Render. Link available here https://python-assignment-to8q.onrender.com/
 
-WalletWatcher is configured to run on Render.
 
 Start Command:
 gunicorn app:app --bind 0.0.0.0:$PORT
